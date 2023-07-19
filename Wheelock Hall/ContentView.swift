@@ -9,20 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @State var categories: [Category] = []
+    @State var success: Bool = true
     
     var body: some View {
-        List {
-            ForEach(categories) { category in
-                Section(header: Text(category.name).font(.title)) {
-                    ForEach(category.items) { item in
-                        Text(item.name)
-                            .font(.subheadline)
+        VStack {
+            // if the api call was successful
+            if success {
+                // if not done, show a loading symbol
+                if !categories.isEmpty {
+                    List {
+                        ForEach(categories) { category in
+                            CategoryView(category: category)
+                        }
                     }
+                } else {
+                    ProgressView()
                 }
+            // otherwise show error message
+            } else {
+                Label("Failed to get menu.", systemImage: "exclamationmark.triangle.fill")
+                    .font(.title)
             }
         }
         .onAppear {
-            apiCall().getApi { api in
+            ApiCall().getApi { api in
+                guard let api else {
+                    success.toggle()
+                    return
+                }
+                
                 self.categories = api.menu.periods.categories
             }
         }
