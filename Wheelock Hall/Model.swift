@@ -1,5 +1,5 @@
 //
-//  userModel.swift
+//  Model.swift
 //  Wheelock Hall
 //
 //  Created by Aidan Carey on 2023-07-18.
@@ -38,23 +38,9 @@ struct Category: Decodable, Identifiable {
     // im not sure how this works yet because theres only one period
     // and category until september
     let sort_order: Int
-    
-    // an individual food item
-//    struct Item: Decodable, Identifiable {
-//        let id: String
-//        let name: String
-//        let nutrients: [Nutrient]
-//        let calories: Int
-//        
-//        // protein, calories, etc
-//        struct Nutrient: Decodable {
-//            let name: String
-//            let value: String
-//            let uom: String // unit (i.e. 'g' for grams)
-//        }
-//    }
 }
 
+// an individual food item
 struct Item: Decodable, Identifiable {
     let id: String
     let name: String

@@ -10,8 +10,8 @@
 		56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */; };
 		56EDFD082A6781CA008680AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD072A6781CA008680AE /* Assets.xcassets */; };
 		56EDFD0B2A6781CA008680AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD0A2A6781CA008680AE /* Preview Assets.xcassets */; };
-		56EDFD122A678217008680AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD112A678217008680AE /* UserModel.swift */; };
-		56EDFD142A67825F008680AE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD132A67825F008680AE /* UserViewModel.swift */; };
+		56EDFD122A678217008680AE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD112A678217008680AE /* Model.swift */; };
+		56EDFD142A67825F008680AE /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD132A67825F008680AE /* ApiCall.swift */; };
 		56EDFD202A6792E7008680AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD1F2A6792E7008680AE /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,8 +20,8 @@
 		56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheelock_HallApp.swift; sourceTree = "<group>"; };
 		56EDFD072A6781CA008680AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EDFD0A2A6781CA008680AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		56EDFD112A678217008680AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		56EDFD132A67825F008680AE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		56EDFD112A678217008680AE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		56EDFD132A67825F008680AE /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
 		56EDFD1F2A6792E7008680AE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,9 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */,
-				56EDFD112A678217008680AE /* UserModel.swift */,
+				56EDFD112A678217008680AE /* Model.swift */,
 				56EDFD1F2A6792E7008680AE /* ContentView.swift */,
-				56EDFD132A67825F008680AE /* UserViewModel.swift */,
+				56EDFD132A67825F008680AE /* ApiCall.swift */,
 				56EDFD072A6781CA008680AE /* Assets.xcassets */,
 				56EDFD092A6781CA008680AE /* Preview Content */,
 			);
@@ -143,10 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56EDFD142A67825F008680AE /* UserViewModel.swift in Sources */,
+				56EDFD142A67825F008680AE /* ApiCall.swift in Sources */,
 				56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */,
 				56EDFD202A6792E7008680AE /* ContentView.swift in Sources */,
-				56EDFD122A678217008680AE /* UserModel.swift in Sources */,
+				56EDFD122A678217008680AE /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
