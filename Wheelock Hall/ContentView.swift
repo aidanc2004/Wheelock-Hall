@@ -17,6 +17,9 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
+                    Text("Wheelock Hall Menu")
+                        .font(.title)
+                    
                     List {
                         ForEach(categories) { category in
                             CategoryView(category: category)

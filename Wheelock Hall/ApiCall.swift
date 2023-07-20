@@ -7,6 +7,7 @@
 
 import Foundation
 
+// class to get the dine on campus api
 class ApiCall {
     func getApi(completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
