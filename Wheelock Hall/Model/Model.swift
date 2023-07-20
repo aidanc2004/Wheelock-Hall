@@ -44,8 +44,10 @@ struct Category: Decodable, Identifiable {
 struct Item: Decodable, Identifiable {
     let id: String
     let name: String
+    let desc: String
     let nutrients: [Nutrient]
     let calories: Int
+    let portion: String
     
     // protein, calories, etc
     struct Nutrient: Decodable {

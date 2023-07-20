@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		564FE0772A68DD370036C8B5 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FE0762A68DD370036C8B5 /* ItemView.swift */; };
 		5667CD6F2A67A44800B60348 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667CD6E2A67A44800B60348 /* CategoryView.swift */; };
 		56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */; };
 		56EDFD082A6781CA008680AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD072A6781CA008680AE /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		564FE0762A68DD370036C8B5 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		5667CD6E2A67A44800B60348 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		56EDFD002A6781C9008680AE /* Wheelock Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wheelock Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheelock_HallApp.swift; sourceTree = "<group>"; };
@@ -38,6 +40,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		564FE0742A68DBE30036C8B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56EDFD112A678217008680AE /* Model.swift */,
+				56EDFD132A67825F008680AE /* ApiCall.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		564FE0752A68DC030036C8B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */,
+				56EDFD1F2A6792E7008680AE /* ContentView.swift */,
+				5667CD6E2A67A44800B60348 /* CategoryView.swift */,
+				564FE0762A68DD370036C8B5 /* ItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		56EDFCF72A6781C9008680AE = {
 			isa = PBXGroup;
 			children = (
@@ -57,11 +79,8 @@
 		56EDFD022A6781C9008680AE /* Wheelock Hall */ = {
 			isa = PBXGroup;
 			children = (
-				56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */,
-				56EDFD112A678217008680AE /* Model.swift */,
-				56EDFD1F2A6792E7008680AE /* ContentView.swift */,
-				5667CD6E2A67A44800B60348 /* CategoryView.swift */,
-				56EDFD132A67825F008680AE /* ApiCall.swift */,
+				564FE0752A68DC030036C8B5 /* Views */,
+				564FE0742A68DBE30036C8B5 /* Model */,
 				56EDFD072A6781CA008680AE /* Assets.xcassets */,
 				56EDFD092A6781CA008680AE /* Preview Content */,
 			);
@@ -149,6 +168,7 @@
 				56EDFD142A67825F008680AE /* ApiCall.swift in Sources */,
 				56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */,
 				56EDFD202A6792E7008680AE /* ContentView.swift in Sources */,
+				564FE0772A68DD370036C8B5 /* ItemView.swift in Sources */,
 				56EDFD122A678217008680AE /* Model.swift in Sources */,
 				5667CD6F2A67A44800B60348 /* CategoryView.swift in Sources */,
 			);

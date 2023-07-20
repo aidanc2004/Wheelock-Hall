@@ -13,8 +13,7 @@ struct CategoryView: View {
     var body: some View {
         Section(header: Text(category.name).font(.title)) {
             ForEach(category.items) { item in
-                Text(item.name)
-                    .font(.subheadline)
+                ItemView(item: item)
             }
         }
     }
