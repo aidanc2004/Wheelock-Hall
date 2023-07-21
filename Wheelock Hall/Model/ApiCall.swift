@@ -17,7 +17,7 @@ class ApiCall {
         //let dateString = dateFormatter.string(from: date) // convert date to string
         
         // example date that has a current menu (april 4, 2023)
-        // NOTE: only has rise and dine, once the api is avaliable again dont use it
+        // TODO: only has rise and dine, once the api is avaliable again dont use it
         let dateString = "20230404"
         
         // url of the api

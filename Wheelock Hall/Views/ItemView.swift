@@ -20,7 +20,7 @@ struct ItemView: View {
             // show item description if it exists
             if item.desc != "~" {
                 // TODO: only capitalize first word
-                Text(item.desc.capitalized)
+                Text(itemDescription())
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -37,12 +37,33 @@ struct ItemView: View {
             }
         }
     }
+    
+    func itemDescription() -> String {
+        var description = item.desc
+        
+        // Add period the end of the description
+        if !description.hasPrefix(".") {
+            description.append(".")
+        }
+        
+        var prefix = description.prefix(1)
+        
+        // Capitalize begining of description
+        if prefix != prefix.capitalized {
+            // remove prefix
+            description.remove(at: description.startIndex)
+            // insert new capitalized prefix
+            description.insert(Character(prefix.capitalized), at: description.startIndex)
+        }
+        
+        return description
+    }
 }
 
 struct ItemView_Previews: PreviewProvider {
     static var item: Item = Item(id: "id",
         name: "Item Name",
-        desc: "This is an item description.",
+        desc: "this is an item description",
         nutrients: [],
         calories: 123,
         portion: "1 each"

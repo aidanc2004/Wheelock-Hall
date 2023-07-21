@@ -25,6 +25,7 @@ struct ContentView: View {
                             CategoryView(category: category)
                         }
                     }
+                    .listStyle(.insetGrouped)
                 } else {
                     ProgressView()
                 }
@@ -44,7 +45,6 @@ struct ContentView: View {
                 self.categories = api.menu.periods.categories
             }
         }
-        .padding()
     }
 }
 
