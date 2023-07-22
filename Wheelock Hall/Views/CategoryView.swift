@@ -17,7 +17,6 @@ struct CategoryView: View {
                     ItemView(item: item, selected: $selected)
                         .onTapGesture {
                             selected = item.name
-                            print(selected!)
                         }
             }
         }

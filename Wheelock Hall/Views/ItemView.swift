@@ -29,7 +29,7 @@ struct ItemView: View {
                 if selected == item.name {
                     Group {
                         Text("\(item.portion)")
-                        Text("\(item.calories)")
+                        Text("\(item.calories) cal")
                         // probably use seperate view for these
                         Text("Ingredients: TODO")
                         Text("Nutrients: TODO")
@@ -42,6 +42,8 @@ struct ItemView: View {
         }
         .listRowBackground(backgroundColor())
         .contentShape(Rectangle())
+        // TODO: make animation look better
+        .animation(.spring(), value: selected)
     }
     
     // add grammer to item description
@@ -69,7 +71,11 @@ struct ItemView: View {
     // choose background color if item is selected
     func backgroundColor() -> Color {
         if selected == item.name {
-            return Color.white.opacity(0.5)
+            if colorScheme == .dark {
+                return Color.gray.opacity(0.1)
+            } else {
+                return Color.white.opacity(0.5)
+            }
         } else {
             if colorScheme == .dark {
                 return Color.black
