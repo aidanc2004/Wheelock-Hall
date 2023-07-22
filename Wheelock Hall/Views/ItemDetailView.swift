@@ -38,15 +38,14 @@ struct ItemDetailView: View {
                     }
                 }
             }
+            .listStyle(.inset)
             
-            Text("Ingredients:")
-                .font(.headline)
-            
-            let ingredientArray = item.ingredients.components(separatedBy: ", ")
-            
-            List(ingredientArray, id: \.self) { ingredient in
-                Text(ingredient)
+            VStack {
+                Text("Ingredients:")
+                    .font(.headline)
+                Text(item.ingredients)
             }
+            .padding()
         }
     }
     

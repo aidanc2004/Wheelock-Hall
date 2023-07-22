@@ -13,9 +13,12 @@ struct ItemView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        // NOTE: when i use ZStack it looks better, but it makes it so if the
-        // name is too long you cant link the navigation link
-        HStack {
+        /*
+         NOTE: when i use ZStack over HStack it looks better, but it makes it
+         so if the name is too long you cant go to the navigation link until
+         expanded
+        */
+        ZStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Text(item.name.capitalized)
                     .font(.subheadline)
@@ -33,6 +36,7 @@ struct ItemView: View {
                         Text("\(item.portion)")
                         Text("\(item.calories) cal")
                     }
+                    .transition(.opacity)
                     .font(.caption)
                 }
             }

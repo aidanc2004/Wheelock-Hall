@@ -5,6 +5,8 @@
 //  Created by Aidan Carey on 2023-07-18.
 //
 
+/* TODO: add period selection so it only shows breakfast, lunch, etc */
+
 import SwiftUI
 
 struct ContentView: View {
@@ -17,20 +19,7 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
-                    NavigationView {
-                        VStack {
-                            Text("Wheelock Hall Menu")
-                                .font(.title)
-                                .padding()
-                            
-                            List {
-                                ForEach(categories) { category in
-                                    CategoryView(category: category)
-                                }
-                            }
-                            .listStyle(.insetGrouped)
-                        }
-                    }
+                    MenuView(categories: categories)
                 } else {
                     ProgressView()
                 }
