@@ -14,10 +14,7 @@ struct CategoryView: View {
     var body: some View {
         Section(header: Text(category.name).font(.title)) {
             ForEach(category.items) { item in
-                    ItemView(item: item, selected: $selected)
-                        .onTapGesture {
-                            selected = item.name
-                        }
+                ItemView(item: item, selected: $selected)
             }
         }
     }

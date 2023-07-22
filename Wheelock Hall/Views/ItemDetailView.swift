@@ -13,11 +13,13 @@ struct ItemDetailView: View {
     var body: some View {
         VStack {
             VStack {
-                Text(item.name)
+                Text(item.name.capitalized)
                     .font(.title)
                 
-                Text(itemDescription())
-                    .foregroundColor(.gray)
+                if item.desc != "~" {
+                    Text(itemDescription())
+                        .foregroundColor(.gray)
+                }
                 
                 Text("\(item.portion), \(item.calories) calories.")
             }
@@ -27,10 +29,13 @@ struct ItemDetailView: View {
                 .font(.headline)
             
             List(item.nutrients, id: \.name) { nutrient in
-                HStack {
-                    Text(nutrient.name)
-                    Spacer()
-                    Text("\(nutrient.value)\(nutrient.uom)")
+                // dont display nutrients that are not there
+                if nutrient.value != "-" && nutrient.value != "0" {
+                    HStack {
+                        Text(nutrient.name)
+                        Spacer()
+                        Text("\(nutrient.value) \(nutrient.uom)")
+                    }
                 }
             }
             
@@ -69,7 +74,7 @@ struct ItemDetailView: View {
 
 struct ItemDetailView_Previews: PreviewProvider {
     static var item: Item = Item(id: "id",
-        name: "Item Name",
+        name: "item name",
         desc: "this is an item description",
         nutrients: [
             Nutrient(name: "Name", value: "123", uom: "g"),

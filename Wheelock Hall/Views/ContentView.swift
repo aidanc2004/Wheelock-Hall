@@ -17,15 +17,20 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
-                    Text("Wheelock Hall Menu")
-                        .font(.title)
-                    
-                    List {
-                        ForEach(categories) { category in
-                            CategoryView(category: category)
+                    NavigationView {
+                        VStack {
+                            Text("Wheelock Hall Menu")
+                                .font(.title)
+                                .padding()
+                            
+                            List {
+                                ForEach(categories) { category in
+                                    CategoryView(category: category)
+                                }
+                            }
+                            .listStyle(.insetGrouped)
                         }
                     }
-                    .listStyle(.insetGrouped)
                 } else {
                     ProgressView()
                 }

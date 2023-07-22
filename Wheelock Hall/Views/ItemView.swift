@@ -13,9 +13,11 @@ struct ItemView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+        // NOTE: when i use ZStack it looks better, but it makes it so if the
+        // name is too long you cant link the navigation link
         HStack {
             VStack(alignment: .leading) {
-                Text(item.name)
+                Text(item.name.capitalized)
                     .font(.subheadline)
                 
                 // show item description if it exists
@@ -34,17 +36,12 @@ struct ItemView: View {
                     .font(.caption)
                 }
             }
-            
-            Spacer()
-            
-            // TODO: cant pressed button most times
-            Button(action: {
-                // TODO: goto item detail view
-                print("pressed")
-            }) {
-                Image(systemName: "info.circle")
+            .onTapGesture {
+                selected = item.name
             }
-            .foregroundColor(.gray)
+            
+            // show detailed view
+            NavigationLink(destination: ItemDetailView(item: item)) {}
         }
         .listRowBackground(backgroundColor())
         .contentShape(Rectangle())
@@ -94,7 +91,7 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var item: Item = Item(id: "id",
-        name: "Item Name",
+        name: "item name",
         desc: "this is an item description",
         nutrients: [],
         ingredients: "",
