@@ -46,13 +46,14 @@ struct Item: Decodable, Identifiable {
     let name: String
     let desc: String
     let nutrients: [Nutrient]
+    let ingredients: String
     let calories: Int
     let portion: String
-    
-    // protein, calories, etc
-    struct Nutrient: Decodable {
-        let name: String
-        let value: String
-        let uom: String // unit (i.e. 'g' for grams)
-    }
+}
+
+// protein, calories, etc
+struct Nutrient: Decodable {
+    let name: String
+    let value: String
+    let uom: String // unit (i.e. 'g' for grams)
 }

@@ -30,15 +30,21 @@ struct ItemView: View {
                     Group {
                         Text("\(item.portion)")
                         Text("\(item.calories) cal")
-                        // probably use seperate view for these
-                        Text("Ingredients: TODO")
-                        Text("Nutrients: TODO")
                     }
                     .font(.caption)
                 }
             }
             
             Spacer()
+            
+            // TODO: cant pressed button most times
+            Button(action: {
+                // TODO: goto item detail view
+                print("pressed")
+            }) {
+                Image(systemName: "info.circle")
+            }
+            .foregroundColor(.gray)
         }
         .listRowBackground(backgroundColor())
         .contentShape(Rectangle())
@@ -91,6 +97,7 @@ struct ItemView_Previews: PreviewProvider {
         name: "Item Name",
         desc: "this is an item description",
         nutrients: [],
+        ingredients: "",
         calories: 123,
         portion: "1 each"
     )
