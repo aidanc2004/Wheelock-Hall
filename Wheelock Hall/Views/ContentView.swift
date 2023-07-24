@@ -12,7 +12,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var categories: [Category] = []
     @State private var periods: [Period] = []
-    @State var success: Bool = true
+    @State private var success: Bool = true
     
     var body: some View {
         VStack {
@@ -31,15 +31,19 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            ApiCall().getApi { api in
-                guard let api else {
-                    success.toggle()
-                    return
-                }
-                
-                self.categories = api.menu.periods.categories
-                self.periods = api.periods
+            callApi(period: 1)
+        }
+    }
+    
+    func callApi(period: Int) {
+        ApiCall().getApi(period: period) { api in
+            guard let api else {
+                success.toggle()
+                return
             }
+            
+            self.categories = api.menu.periods.categories
+            self.periods = api.periods
         }
     }
 }

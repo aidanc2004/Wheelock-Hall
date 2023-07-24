@@ -9,7 +9,7 @@ import Foundation
 
 // class to get the dine on campus api
 class ApiCall {
-    func getApi(completion: @escaping (DineOnCampusAPI?) -> ()) {
+    func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
         //let date = Date()
         //let dateFormatter = DateFormatter()
@@ -17,11 +17,20 @@ class ApiCall {
         //let dateString = dateFormatter.string(from: date) // convert date to string
         
         // example date that has a current menu (april 4, 2023)
-        // TODO: only has rise and dine, once the api is avaliable again dont use it
         let dateString = "20230404"
         
+        // TODO: dont hardcode periods
+        // breakfast, lunch and dinner
+        let periods = [
+            "64bec33e0010cc05c2fcc8ec",
+            "64bec33e0010cc05c2fcc8ee",
+            "64bec33f0010cc05c2fcc8f5"
+        ]
+        
+        let period = periods[periodNumber]
+        
         // url of the api
-        guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/63b7353d92d6b47d412fff24/periods?platform=0&date=\(dateString)") else { return }
+        guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/63b7353d92d6b47d412fff24/periods/\(period)?platform=0&date=\(dateString)") else { return }
         
         // fetch data from url
         URLSession.shared.dataTask(with: url) { data, response, error in
