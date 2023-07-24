@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     var categories: [Category]
+    var periods: [Period]
     
     var body: some View {
         NavigationView {
@@ -19,9 +20,16 @@ struct MenuView: View {
                     
                     Text(Date().formatted(date: .abbreviated, time: .omitted))
                         .foregroundColor(.gray)
+                    
+                    Menu("Periods") {
+                        ForEach(periods, id: \.sort_order) { period in
+                            Button(period.name) {
+                                print("TODO")
+                            }
+                        }
+                    }
                 }
                 .padding()
-                .background()
                 
                 List {
                     ForEach(categories) { category in

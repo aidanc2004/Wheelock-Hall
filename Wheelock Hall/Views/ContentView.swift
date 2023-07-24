@@ -10,7 +10,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var categories: [Category] = []
+    @State private var categories: [Category] = []
+    @State private var periods: [Period] = []
     @State var success: Bool = true
     
     var body: some View {
@@ -19,7 +20,7 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
-                    MenuView(categories: categories)
+                    MenuView(categories: categories, periods: periods)
                 } else {
                     ProgressView()
                 }
@@ -37,6 +38,7 @@ struct ContentView: View {
                 }
                 
                 self.categories = api.menu.periods.categories
+                self.periods = api.periods
             }
         }
     }

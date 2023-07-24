@@ -19,13 +19,13 @@ struct DineOnCampusAPI: Decodable {
             let categories: [Category]
         }
     }
-    
-    // maybe if this is always the same i can just save it once
-    // for the location (ex. wheelock)
-    struct Period: Decodable {
-        let name: String
-        let sort_order: Int
-    }
+}
+
+// maybe if this is always the same i can just save it once
+// for the location (ex. wheelock)
+struct Period: Decodable {
+    let name: String
+    let sort_order: Int
 }
 
 // the grill house, the kitchen, etc
