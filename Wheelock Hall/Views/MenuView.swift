@@ -12,27 +12,44 @@ struct MenuView: View {
     var periods: [Period]
     var callApi: (Int) -> ()
     
+    // TODO: dont hardcode this
+    // default to first
+    @State private var currentPeriod: String = "Breakfast"
+    
     var body: some View {
         NavigationView {
             VStack {
+                // header
                 VStack {
-                    Text("Wheelock Hall Menu")
-                        .font(.title)
+                    // name and date
+                    VStack {
+                        Text("Wheelock Hall Menu")
+                            .font(.title)
+                        
+                        Text(Date().formatted(date: .abbreviated, time: .omitted))
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.vertical)
                     
-                    Text(Date().formatted(date: .abbreviated, time: .omitted))
-                        .foregroundColor(.gray)
-                    
-                    // TODO: add loading circle when switching periods
-                    Menu("Periods") {
-                        ForEach(periods, id: \.sort_order) { period in
-                            Button(period.name) {
-                                callApi(period.sort_order)
+                    // menu selection
+                    HStack {
+                        Spacer()
+                        
+                        // TODO: add loading circle when switching periods
+                        Menu(currentPeriod) {
+                            ForEach(periods, id: \.sort_order) { period in
+                                Button(period.name) {
+                                    callApi(period.sort_order)
+                                    currentPeriod = period.name
+                                }
                             }
                         }
+                        .font(.title3)
+                        .padding(.horizontal)
                     }
                 }
-                .padding()
                 
+                // menu
                 List {
                     ForEach(categories) { category in
                         CategoryView(category: category)

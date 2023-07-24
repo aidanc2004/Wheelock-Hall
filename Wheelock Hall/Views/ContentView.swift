@@ -5,8 +5,6 @@
 //  Created by Aidan Carey on 2023-07-18.
 //
 
-/* TODO: add period selection so it only shows breakfast, lunch, etc */
-
 import SwiftUI
 
 struct ContentView: View {
@@ -20,7 +18,9 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
-                    MenuView(categories: categories, periods: periods, callApi: callApi)
+                    MenuView(categories: categories,
+                             periods: periods,
+                             callApi: callApi)
                 } else {
                     ProgressView()
                 }
@@ -38,8 +38,6 @@ struct ContentView: View {
     
     func callApi(period: Int) {
         ApiCall().getApi(period: period) { api in
-            self.categories = []
-            
             guard let api else {
                 success.toggle()
                 return
