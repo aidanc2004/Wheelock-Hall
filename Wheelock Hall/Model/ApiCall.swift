@@ -46,7 +46,6 @@ class ApiCall {
                 api = try JSONDecoder().decode(DineOnCampusAPI.self, from: data)
             } catch {
                 api = nil
-//                fatalError(error.localizedDescription)
             }
             
             // escape the api object

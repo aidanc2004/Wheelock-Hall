@@ -20,7 +20,7 @@ struct ContentView: View {
             if success {
                 // if not done, show a loading symbol
                 if !categories.isEmpty {
-                    MenuView(categories: categories, periods: periods)
+                    MenuView(categories: categories, periods: periods, callApi: callApi)
                 } else {
                     ProgressView()
                 }
@@ -31,12 +31,15 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            callApi(period: 1)
+            // default to first
+            callApi(period: 0)
         }
     }
     
     func callApi(period: Int) {
         ApiCall().getApi(period: period) { api in
+            self.categories = []
+            
             guard let api else {
                 success.toggle()
                 return

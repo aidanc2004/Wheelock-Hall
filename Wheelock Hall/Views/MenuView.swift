@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     var categories: [Category]
     var periods: [Period]
+    var callApi: (Int) -> ()
     
     var body: some View {
         NavigationView {
@@ -21,10 +22,11 @@ struct MenuView: View {
                     Text(Date().formatted(date: .abbreviated, time: .omitted))
                         .foregroundColor(.gray)
                     
+                    // TODO: add loading circle when switching periods
                     Menu("Periods") {
                         ForEach(periods, id: \.sort_order) { period in
                             Button(period.name) {
-                                print("TODO")
+                                callApi(period.sort_order)
                             }
                         }
                     }
