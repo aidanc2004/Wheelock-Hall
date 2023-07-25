@@ -24,6 +24,7 @@ struct DineOnCampusAPI: Decodable {
 // maybe if this is always the same i can just save it once
 // for the location (ex. wheelock)
 struct Period: Decodable {
+    let id: String
     let name: String
     let sort_order: Int
 }
