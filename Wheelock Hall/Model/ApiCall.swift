@@ -13,13 +13,13 @@ class ApiCall {
     
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
-        //let date = Date()
-        //let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyyMMdd" // set date format to iso
-        //let dateString = dateFormatter.string(from: date) // convert date to string
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd" // set date format to iso
+        let dateString = dateFormatter.string(from: date) // convert date to string
         
         // example date that has a current menu (april 4, 2023)
-        let dateString = "20230404"
+        //let dateString = "20230404"
         
         let period = ApiCall.period_ids[periodNumber]
         
@@ -36,7 +36,6 @@ class ApiCall {
                 DispatchQueue.main.async {
                     completion(nil)
                 }
-                
                 return
             }
             
@@ -46,7 +45,12 @@ class ApiCall {
                 api = try JSONDecoder().decode(DineOnCampusAPI.self, from: data)
             } catch {
                 api = nil
-                print(error)
+                
+                // escape nil to show error
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
             }
             
             // fill period_ids if it only has the default ""
