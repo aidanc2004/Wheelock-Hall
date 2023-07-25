@@ -23,16 +23,21 @@ class ApiCall {
         
         let period = ApiCall.period_ids[periodNumber]
         
-        // url of the api
+        // get the url of the api
         guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/63b7353d92d6b47d412fff24/periods/\(period)?platform=0&date=\(dateString)") else { return }
         
-        // TODO: add error handling for when theres no internet connection
         // fetch data from url
         URLSession.shared.dataTask(with: url) { data, response, error in
-            // unwrap data, check for error in getting data
+            // unwrap data and check for error in getting data
             guard let data = data, error == nil else {
-                print("error: \(error!)")
-                exit(EXIT_FAILURE)
+                print(String(describing: error))
+                
+                // escape nil to show error
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                
+                return
             }
             
             // decode data into DineOnCampusAPI struct

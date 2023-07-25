@@ -49,7 +49,6 @@ struct ItemView: View {
         }
         .listRowBackground(backgroundColor())
         .contentShape(Rectangle())
-        // TODO: make animation look better
         .animation(.spring(), value: selected)
     }
     

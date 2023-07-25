@@ -11,6 +11,7 @@ struct MenuView: View {
     var categories: [Category]
     var periods: [Period]
     var callApi: (Int) -> ()
+    @State var selected: String? = nil
     
     // TODO: initalize this to periods[0].name
     @State private var currentPeriod: String = ""
@@ -51,7 +52,7 @@ struct MenuView: View {
                 // menu
                 List {
                     ForEach(categories) { category in
-                        CategoryView(category: category)
+                        CategoryView(category: category, selected: $selected)
                     }
                 }
                 .listStyle(.insetGrouped)

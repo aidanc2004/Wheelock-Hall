@@ -9,8 +9,7 @@ import SwiftUI
 
 struct CategoryView: View {
     var category: Category
-    // TODO: selected is only for one category
-    @State var selected: String? = nil
+    @Binding var selected: String?
     
     var body: some View {
         Section(header: Text(category.name).font(.title)) {
