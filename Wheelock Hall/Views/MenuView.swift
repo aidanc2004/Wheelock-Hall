@@ -12,6 +12,7 @@ struct MenuView: View {
     var periods: [Period]
     var callApi: (Int) -> ()
     @State var selected: String? = nil
+    @Binding var done: Bool
     
     // TODO: initalize this to periods[0].name
     @State private var currentPeriod: String = ""
@@ -35,10 +36,10 @@ struct MenuView: View {
                     HStack {
                         Spacer()
                         
-                        // TODO: add loading circle when switching periods
                         Menu(currentPeriod == "" ? periods[0].name : currentPeriod) {
                             ForEach(periods, id: \.sort_order) { period in
                                 Button(period.name) {
+                                    done = false
                                     callApi(period.sort_order)
                                     currentPeriod = period.name
                                 }

@@ -11,16 +11,19 @@ struct ContentView: View {
     @State private var categories: [Category] = []
     @State private var periods: [Period] = []
     @State private var success: Bool = true
+    // TODO: keep title while loading (after first load)
+    @State private var done: Bool = false
     
     var body: some View {
         VStack {
             // if the api call was successful
             if success {
                 // if not done, show a loading symbol
-                if !categories.isEmpty {
+                if done {
                     MenuView(categories: categories,
                              periods: periods,
-                             callApi: callApi)
+                             callApi: callApi,
+                             done: $done)
                 } else {
                     ProgressView()
                 }
@@ -45,6 +48,8 @@ struct ContentView: View {
             
             self.categories = api.menu.periods.categories
             self.periods = api.periods
+            
+            self.done = true
         }
     }
 }
