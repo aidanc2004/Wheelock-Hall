@@ -12,9 +12,8 @@ struct MenuView: View {
     var periods: [Period]
     var callApi: (Int) -> ()
     
-    // TODO: dont hardcode this
-    // default to first
-    @State private var currentPeriod: String = "Breakfast"
+    // TODO: initalize this to periods[0].name
+    @State private var currentPeriod: String = ""
     
     var body: some View {
         NavigationView {
@@ -36,7 +35,7 @@ struct MenuView: View {
                         Spacer()
                         
                         // TODO: add loading circle when switching periods
-                        Menu(currentPeriod) {
+                        Menu(currentPeriod == "" ? "breakfast" : currentPeriod) {
                             ForEach(periods, id: \.sort_order) { period in
                                 Button(period.name) {
                                     callApi(period.sort_order)
