@@ -35,7 +35,7 @@ struct MenuView: View {
                         Spacer()
                         
                         // TODO: add loading circle when switching periods
-                        Menu(currentPeriod == "" ? "breakfast" : currentPeriod) {
+                        Menu(currentPeriod == "" ? periods[0].name : currentPeriod) {
                             ForEach(periods, id: \.sort_order) { period in
                                 Button(period.name) {
                                     callApi(period.sort_order)
