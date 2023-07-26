@@ -14,18 +14,29 @@ struct ContentView: View {
     // TODO: keep title while loading (after first load)
     @State private var done: Bool = false
     
+    @State private var first: Bool = false
+    
     var body: some View {
         VStack {
             // if the api call was successful
             if success {
+                if done || first {
+                    TitleView(periods: periods,
+                              callApi: callApi,
+                              done: $done)
+                    .onAppear {
+                        first = true
+                    }
+                    Spacer()
+                }
+                
                 // if not done, show a loading symbol
                 if done {
-                    MenuView(categories: categories,
-                             periods: periods,
-                             callApi: callApi,
-                             done: $done)
+                    MenuView(categories: categories)
                 } else {
+                    if !first { Spacer() }
                     ProgressView()
+                    Spacer()
                 }
             // otherwise show error message
             } else {
