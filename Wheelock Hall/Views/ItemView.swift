@@ -25,7 +25,7 @@ struct ItemView: View {
                 
                 // show item description if it exists
                 if item.desc != "~" {
-                    Text(itemDescription())
+                    Text(item.desc.itemDescription())
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
@@ -50,28 +50,6 @@ struct ItemView: View {
         .listRowBackground(backgroundColor())
         .contentShape(Rectangle())
         .animation(.spring(), value: selected)
-    }
-    
-    // add grammer to item description
-    func itemDescription() -> String {
-        var description = item.desc
-        
-        // Add period the end of the description
-        if !description.hasPrefix(".") {
-            description.append(".")
-        }
-        
-        let prefix = description.prefix(1)
-        
-        // Capitalize begining of description
-        if prefix != prefix.capitalized {
-            // remove prefix
-            description.remove(at: description.startIndex)
-            // insert new capitalized prefix
-            description.insert(Character(prefix.capitalized), at: description.startIndex)
-        }
-        
-        return description
     }
     
     // choose background color if item is selected
