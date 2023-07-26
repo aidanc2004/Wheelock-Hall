@@ -15,7 +15,7 @@ struct MenuView: View {
     @Binding var done: Bool
     
     // TODO: initalize this to periods[0].name
-    @State private var currentPeriod: String = ""
+    static var currentPeriod: String = ""
     
     var body: some View {
         NavigationView {
@@ -36,12 +36,12 @@ struct MenuView: View {
                     HStack {
                         Spacer()
                         
-                        Menu(currentPeriod == "" ? periods[0].name : currentPeriod) {
+                        Menu(Self.currentPeriod == "" ? periods[0].name : Self.currentPeriod) {
                             ForEach(periods, id: \.sort_order) { period in
                                 Button(period.name) {
                                     done = false
                                     callApi(period.sort_order)
-                                    currentPeriod = period.name
+                                    Self.currentPeriod = period.name
                                 }
                             }
                         }

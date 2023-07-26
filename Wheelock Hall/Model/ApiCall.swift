@@ -10,18 +10,19 @@ import Foundation
 // class to get the dine on campus api
 class ApiCall {
     static var period_ids: [String] = [""] // none for first period
+    static var error: String? // not `Error?` because this is for the user
     
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd" // set date format to iso
-        let dateString = dateFormatter.string(from: date) // convert date to string
+        //let date = Date()
+        //let dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat = "yyyyMMdd" // set date format to iso
+        //let dateString = dateFormatter.string(from: date) // convert date to string
         
         // example date that has a current menu (april 4, 2023)
-        //let dateString = "20230404"
+        let dateString = "20230404"
         
-        let period = ApiCall.period_ids[periodNumber]
+        let period = Self.period_ids[periodNumber]
         
         // get the url of the api
         guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/63b7353d92d6b47d412fff24/periods/\(period)?platform=0&date=\(dateString)") else { return }
@@ -31,6 +32,7 @@ class ApiCall {
             // unwrap data and check for error in getting data
             guard let data = data, error == nil else {
                 print(String(describing: error))
+                Self.error = "Cannot connect."
                 
                 // escape nil to show error
                 DispatchQueue.main.async {
@@ -44,7 +46,8 @@ class ApiCall {
             do {
                 api = try JSONDecoder().decode(DineOnCampusAPI.self, from: data)
             } catch {
-                api = nil
+                print(String(describing: error))
+                Self.error = "No menu avaliable for \(Date().formatted(date: .abbreviated, time: .omitted))."
                 
                 // escape nil to show error
                 DispatchQueue.main.async {
@@ -54,13 +57,13 @@ class ApiCall {
             }
             
             // fill period_ids if it only has the default ""
-            if ApiCall.period_ids.count == 1 {
-                ApiCall.period_ids = [] // clear array
+            if Self.period_ids.count == 1 {
+                Self.period_ids = [] // clear array
                 
                 let periods = api?.periods
                 
                 for period in periods! {
-                    ApiCall.period_ids.append(period.id)
+                    Self.period_ids.append(period.id)
                 }
             }
             

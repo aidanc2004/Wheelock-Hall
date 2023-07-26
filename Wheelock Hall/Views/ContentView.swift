@@ -29,8 +29,11 @@ struct ContentView: View {
                 }
             // otherwise show error message
             } else {
-                Label("Failed to get menu.", systemImage: "exclamationmark.triangle.fill")
-                    .font(.title)
+                VStack {
+                    Label("Failed to get menu.", systemImage: "exclamationmark.triangle.fill")
+                        .font(.title)
+                    Text(ApiCall.error!)
+                }
             }
         }
         .onAppear {
