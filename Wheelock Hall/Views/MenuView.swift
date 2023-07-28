@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     var categories: [Category]
-    @State var selected: String? = nil
-    static var currentPeriod: String = ""
+    @Binding var selected: String?
     
     var body: some View {
         NavigationView {

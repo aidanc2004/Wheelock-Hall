@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var success: Bool = true
     @State private var done: Bool = false
     @State private var first: Bool = false
+    @State private var selected: String? = nil
+    static var currentPeriod: String = ""
     
     var body: some View {
         VStack {
@@ -22,7 +24,8 @@ struct ContentView: View {
                 if done || first {
                     TitleView(periods: periods,
                               callApi: callApi,
-                              done: $done)
+                              done: $done,
+                              selected: $selected)
                     .onAppear {
                         first = true
                     }
@@ -31,7 +34,7 @@ struct ContentView: View {
                 
                 // if not done, show a loading symbol
                 if done {
-                    MenuView(categories: categories)
+                    MenuView(categories: categories, selected: $selected)
                 } else {
                     if !first { Spacer() }
                     ProgressView()

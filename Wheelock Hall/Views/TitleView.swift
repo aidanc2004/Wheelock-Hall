@@ -10,8 +10,8 @@ import SwiftUI
 struct TitleView: View {
     var periods: [Period]
     var callApi: (Int) -> ()
-    
     @Binding var done: Bool
+    @Binding var selected: String?
     
     static var currentPeriod: String = ""
     
@@ -31,12 +31,14 @@ struct TitleView: View {
             HStack {
                 Spacer()
                 
+                // set title of menu to current period
                 Menu(Self.currentPeriod == "" ? periods[0].name : Self.currentPeriod) {
                     ForEach(periods, id: \.sort_order) { period in
                         Button(period.name) {
-                            done = false
-                            callApi(period.sort_order)
+                            done = false // not done loading period
+                            callApi(period.sort_order) // load new period
                             Self.currentPeriod = period.name
+                            selected = nil // clear selected item
                         }
                     }
                 }
