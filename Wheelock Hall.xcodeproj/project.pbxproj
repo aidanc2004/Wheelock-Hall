@@ -60,7 +60,6 @@
 		564FE0752A68DC030036C8B5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */,
 				56EDFD1F2A6792E7008680AE /* ContentView.swift */,
 				5667CD6E2A67A44800B60348 /* CategoryView.swift */,
 				564FE0762A68DD370036C8B5 /* ItemView.swift */,
@@ -90,6 +89,7 @@
 		56EDFD022A6781C9008680AE /* Wheelock Hall */ = {
 			isa = PBXGroup;
 			children = (
+				56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */,
 				566897562A71776600AB46F9 /* String.swift */,
 				564FE0752A68DC030036C8B5 /* Views */,
 				564FE0742A68DBE30036C8B5 /* Model */,
