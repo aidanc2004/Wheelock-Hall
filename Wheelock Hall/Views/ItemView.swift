@@ -13,15 +13,13 @@ struct ItemView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        /*
-         NOTE: when i use ZStack over HStack it looks better, but it makes it
-         so if the name is too long you cant go to the navigation link until
-         expanded
-        */
         ZStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Text(item.name.capitalized)
                     .font(.subheadline)
+                    .onTapGesture {
+                        selected = item.name
+                    }
                 
                 // show item description if it exists
                 if item.desc != "~" {
@@ -39,9 +37,6 @@ struct ItemView: View {
                     .transition(.opacity)
                     .font(.caption)
                 }
-            }
-            .onTapGesture {
-                selected = item.name
             }
             
             // show detailed view
