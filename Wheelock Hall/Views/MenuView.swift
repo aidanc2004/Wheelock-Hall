@@ -12,16 +12,14 @@ struct MenuView: View {
     @Binding var selected: String?
     
     var body: some View {
-        NavigationView {
-            VStack {
-                // menu
-                List {
-                    ForEach(categories) { category in
-                        CategoryView(category: category, selected: $selected)
-                    }
+        VStack {
+            // menu
+            List {
+                ForEach(categories) { category in
+                    CategoryView(category: category, selected: $selected)
                 }
-                .listStyle(.insetGrouped)
             }
+            .listStyle(.insetGrouped)
         }
     }
 }

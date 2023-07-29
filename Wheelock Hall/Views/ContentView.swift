@@ -20,25 +20,29 @@ struct ContentView: View {
         VStack {
             // if the api call was successful
             if success {
-                // keep title while loading (after first load)
-                if done || first {
-                    TitleView(periods: periods,
-                              callApi: callApi,
-                              done: $done,
-                              selected: $selected)
-                    .onAppear {
-                        first = true
+                NavigationView {
+                    VStack {
+                        // keep title while loading (after first load)
+                        if done || first {
+                            TitleView(periods: periods,
+                                      callApi: callApi,
+                                      done: $done,
+                                      selected: $selected)
+                            .onAppear {
+                                first = true
+                            }
+                            Spacer()
+                        }
+                        
+                        // if not done, show a loading symbol
+                        if done {
+                            MenuView(categories: categories, selected: $selected)
+                        } else {
+                            if !first { Spacer() }
+                            ProgressView()
+                            Spacer()
+                        }
                     }
-                    Spacer()
-                }
-                
-                // if not done, show a loading symbol
-                if done {
-                    MenuView(categories: categories, selected: $selected)
-                } else {
-                    if !first { Spacer() }
-                    ProgressView()
-                    Spacer()
                 }
             // otherwise show error message
             } else {
