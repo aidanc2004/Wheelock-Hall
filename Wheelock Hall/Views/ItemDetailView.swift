@@ -19,6 +19,7 @@ struct ItemDetailView: View {
                 if item.desc != "~" {
                     Text(item.desc.itemDescription())
                         .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                 }
                 
                 Text("\(item.portion), \(item.calories) calories.")
