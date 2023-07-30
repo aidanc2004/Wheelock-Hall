@@ -19,7 +19,7 @@ struct TitleView: View {
         VStack {
             // name and date
             VStack {
-                Text("Wheelock Hall Menu")
+                Text(ApiCall.title!)
                     .font(.title)
                 
                 Text(Date().formatted(date: .abbreviated, time: .omitted))

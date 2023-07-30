@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var success: Bool = true
     @State private var done: Bool = false
     @State private var first: Bool = false
-    @State private var selected: String? = nil
+    @State private var selected: String?
     static var currentPeriod: String = ""
     
     var body: some View {

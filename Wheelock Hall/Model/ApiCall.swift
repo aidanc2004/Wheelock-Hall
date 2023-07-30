@@ -13,6 +13,7 @@ class ApiCall {
     static var error: String? // not `Error?` because this is for the user
     static var schoolID: String?
     static var locationID: String?
+    static var title: String?
     
     // get menu information
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
@@ -27,10 +28,10 @@ class ApiCall {
         
         let period = Self.period_ids[periodNumber]
         
-        // TODO: only get location and school id once
-        getLocationID(location: "Wheelock Dining Hall") { locationID in
+        getLocationID(school: "acadiau", location: "Wheelock Dining Hall") { locationID in
             guard let locationID else {
-                print("error")
+                Self.error = "Could not get school and location."
+                completion(nil)
                 return
             }
             
@@ -95,10 +96,7 @@ class ApiCall {
         URLSession.shared.dataTask(with: url) { data, response, error in
             // unwrap data and check for error in getting data
             guard let data = data, error == nil else {
-                print(String(describing: error))
-                Self.error = "Cannot connect."
-                
-                // escape nil to show error
+                print("school id: couldn't connect")
                 completion(nil)
                 return
             }
@@ -108,10 +106,7 @@ class ApiCall {
             do {
                 schools = try JSONDecoder().decode(Schools.self, from: data)
             } catch {
-                print(String(describing: error))
-                Self.error = "Error getting schools."
-                
-                // escape nil to show error
+                print("school id: couldn't decode json")
                 completion(nil)
                 return
             }
@@ -127,15 +122,15 @@ class ApiCall {
             }
             
             // unable to find school
-            Self.error = "\(slug) not found."
+            print("school id: \(slug) not found.")
             completion(nil)
         }
         .resume()
     }
     
     // get id of location (ex. wheelock hall)
-    func getLocationID(location name: String, completion: @escaping (String?) -> ()) {
-        getSchool(school: "acadiau") { schoolID in
+    func getLocationID(school: String, location name: String, completion: @escaping (String?) -> ()) {
+        getSchool(school: school) { schoolID in
             // dont call api if location id is already stored
             if Self.locationID != nil {
                 completion(Self.locationID)
@@ -143,7 +138,7 @@ class ApiCall {
             }
             
             guard let schoolID else {
-                print("error getting school id")
+                completion(nil)
                 return
             }
             
@@ -152,10 +147,7 @@ class ApiCall {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 // unwrap data and check for error in getting data
                 guard let data = data, error == nil else {
-                    print(String(describing: error))
-                    Self.error = "Cannot connect."
-                    
-                    // escape nil to show error
+                    print("location id: couldn't connect")
                     completion(nil)
                     return
                 }
@@ -165,10 +157,7 @@ class ApiCall {
                 do {
                     locations = try JSONDecoder().decode(Locations.self, from: data)
                 } catch {
-                    print(String(describing: error))
-                    Self.error = "Error getting locations."
-                    
-                    // escape nil to show error
+                    print("locaiton id: couldn't decode json")
                     completion(nil)
                     return
                 }
@@ -178,13 +167,14 @@ class ApiCall {
                     if location.name == name {
                         // escape locations id
                         Self.locationID = location.id
+                        Self.title = location.name // get title for TitleView
                         completion(location.id)
                         return
                     }
                 }
                 
                 // unable to find location
-                Self.error = "\(name) not found."
+                print("location id: \(name) not found.")
                 completion(nil)
             }
             .resume()
