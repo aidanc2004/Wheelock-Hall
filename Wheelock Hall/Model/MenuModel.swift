@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  MenuModel.swift
 //  Wheelock Hall
 //
 //  Created by Aidan Carey on 2023-07-18.

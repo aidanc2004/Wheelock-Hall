@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561432E42A7710D000C19E51 /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561432E32A7710D000C19E51 /* SchoolModel.swift */; };
 		563C45882A6C516400E1CB5E /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563C45872A6C516400E1CB5E /* ItemDetailView.swift */; };
 		564FE0772A68DD370036C8B5 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FE0762A68DD370036C8B5 /* ItemView.swift */; };
 		5667CD6F2A67A44800B60348 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667CD6E2A67A44800B60348 /* CategoryView.swift */; };
@@ -16,12 +17,13 @@
 		56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */; };
 		56EDFD082A6781CA008680AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD072A6781CA008680AE /* Assets.xcassets */; };
 		56EDFD0B2A6781CA008680AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD0A2A6781CA008680AE /* Preview Assets.xcassets */; };
-		56EDFD122A678217008680AE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD112A678217008680AE /* Model.swift */; };
+		56EDFD122A678217008680AE /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD112A678217008680AE /* MenuModel.swift */; };
 		56EDFD142A67825F008680AE /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD132A67825F008680AE /* ApiCall.swift */; };
 		56EDFD202A6792E7008680AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD1F2A6792E7008680AE /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		561432E32A7710D000C19E51 /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 		563C45872A6C516400E1CB5E /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		564FE0762A68DD370036C8B5 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		5667CD6E2A67A44800B60348 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -32,7 +34,7 @@
 		56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheelock_HallApp.swift; sourceTree = "<group>"; };
 		56EDFD072A6781CA008680AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EDFD0A2A6781CA008680AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		56EDFD112A678217008680AE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		56EDFD112A678217008680AE /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		56EDFD132A67825F008680AE /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
 		56EDFD1F2A6792E7008680AE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,7 +53,8 @@
 		564FE0742A68DBE30036C8B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				56EDFD112A678217008680AE /* Model.swift */,
+				56EDFD112A678217008680AE /* MenuModel.swift */,
+				561432E32A7710D000C19E51 /* SchoolModel.swift */,
 				56EDFD132A67825F008680AE /* ApiCall.swift */,
 			);
 			path = Model;
@@ -185,7 +188,8 @@
 				56EDFD202A6792E7008680AE /* ContentView.swift in Sources */,
 				566897552A71709400AB46F9 /* TitleView.swift in Sources */,
 				564FE0772A68DD370036C8B5 /* ItemView.swift in Sources */,
-				56EDFD122A678217008680AE /* Model.swift in Sources */,
+				561432E42A7710D000C19E51 /* SchoolModel.swift in Sources */,
+				56EDFD122A678217008680AE /* MenuModel.swift in Sources */,
 				5667CD6F2A67A44800B60348 /* CategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

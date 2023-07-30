@@ -12,6 +12,7 @@ class ApiCall {
     static var period_ids: [String] = [""] // none for first period
     static var error: String? // not `Error?` because this is for the user
     
+    // get menu information
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
         //let date = Date()
@@ -70,6 +71,58 @@ class ApiCall {
             // escape the api object
             DispatchQueue.main.async {
                 completion(api)
+            }
+        }
+        .resume()
+    }
+    
+    // get id of school
+    func getSchool(school slug: String, completion: @escaping (String?) -> ()) {
+        // NOTE: only for canadian website, for US use
+        // "https://api.dineoncampus.com/v1/sites/public"
+        guard let url = URL(string: "https://api.dineoncampus.ca/v1/sites/public_ca") else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            // unwrap data and check for error in getting data
+            guard let data = data, error == nil else {
+                print(String(describing: error))
+                Self.error = "Cannot connect."
+                
+                // escape nil to show error
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            // decode data into Schools struct
+            var schools: Schools
+            do {
+                schools = try JSONDecoder().decode(Schools.self, from: data)
+            } catch {
+                print(String(describing: error))
+                Self.error = "Error getting schools."
+                
+                // escape nil to show error
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            // look for school
+            for school in schools.sites {
+                if school.slug == slug {
+                    DispatchQueue.main.async {
+                        completion(school.id)
+                    }
+                    return
+                }
+            }
+            
+            Self.error = "\(slug) not found."
+            DispatchQueue.main.async {
+                completion(nil)
             }
         }
         .resume()
