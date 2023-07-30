@@ -11,6 +11,8 @@ import Foundation
 class ApiCall {
     static var period_ids: [String] = [""] // none for first period
     static var error: String? // not `Error?` because this is for the user
+    static var schoolID: String?
+    static var locationID: String?
     
     // get menu information
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
@@ -33,7 +35,7 @@ class ApiCall {
             }
             
             // get the url of the api
-            guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/\(locationID)/periods/\(period)?platform=0&date=\(dateString)") else { return }
+            let url = URL(string: "https://api.dineoncampus.ca/v1/location/\(locationID)/periods/\(period)?platform=0&date=\(dateString)")!
             
             // fetch data from url
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -80,9 +82,15 @@ class ApiCall {
     
     // get id of school (ex. acadiau)
     func getSchool(school slug: String, completion: @escaping (String?) -> ()) {
+        // dont call api if school id is already stored
+        if Self.schoolID != nil {
+            completion(Self.schoolID)
+            return
+        }
+        
         // NOTE: only for canadian website, for US use
         // "https://api.dineoncampus.com/v1/sites/public"
-        guard let url = URL(string: "https://api.dineoncampus.ca/v1/sites/public_ca") else { return }
+        let url = URL(string: "https://api.dineoncampus.ca/v1/sites/public_ca")!
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             // unwrap data and check for error in getting data
@@ -112,6 +120,7 @@ class ApiCall {
             for school in schools.sites {
                 if school.slug == slug {
                     // escape school id
+                    Self.schoolID = school.id
                     completion(school.id)
                     return
                 }
@@ -127,12 +136,18 @@ class ApiCall {
     // get id of location (ex. wheelock hall)
     func getLocationID(location name: String, completion: @escaping (String?) -> ()) {
         getSchool(school: "acadiau") { schoolID in
+            // dont call api if location id is already stored
+            if Self.locationID != nil {
+                completion(Self.locationID)
+                return
+            }
+            
             guard let schoolID else {
                 print("error getting school id")
                 return
             }
             
-            guard let url = URL(string: "https://api.dineoncampus.ca/v1/locations/buildings_locations?site_id=\(schoolID)") else { return }
+            let url = URL(string: "https://api.dineoncampus.ca/v1/locations/buildings_locations?site_id=\(schoolID)")!
             
             URLSession.shared.dataTask(with: url) { data, response, error in
                 // unwrap data and check for error in getting data
@@ -162,6 +177,7 @@ class ApiCall {
                 for location in locations.standalone_locations {
                     if location.name == name {
                         // escape locations id
+                        Self.locationID = location.id
                         completion(location.id)
                         return
                     }
