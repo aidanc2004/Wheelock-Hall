@@ -25,52 +25,60 @@ class ApiCall {
         
         let period = Self.period_ids[periodNumber]
         
-        // get the url of the api
-        guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/63b7353d92d6b47d412fff24/periods/\(period)?platform=0&date=\(dateString)") else { return }
-        
-        // fetch data from url
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            // unwrap data and check for error in getting data
-            guard let data = data, error == nil else {
-                print(String(describing: error))
-                Self.error = "Cannot connect."
-                
-                // escape nil to show error
-                completion(nil)
+        // TODO: only get location and school id once
+        getLocationID(location: "Wheelock Dining Hall") { locationID in
+            guard let locationID else {
+                print("error")
                 return
             }
             
-            // decode data into DineOnCampusAPI struct
-            var api: DineOnCampusAPI?
-            do {
-                api = try JSONDecoder().decode(DineOnCampusAPI.self, from: data)
-            } catch {
-                print(String(describing: error))
-                Self.error = "No menu avaliable for \(Date().formatted(date: .abbreviated, time: .omitted))."
-                
-                // escape nil to show error
-                completion(nil)
-                return
-            }
+            // get the url of the api
+            guard let url = URL(string: "https://api.dineoncampus.ca/v1/location/\(locationID)/periods/\(period)?platform=0&date=\(dateString)") else { return }
             
-            // fill period_ids if it only has the default ""
-            if Self.period_ids.count == 1 {
-                Self.period_ids = [] // clear array
-                
-                let periods = api?.periods
-                
-                for period in periods! {
-                    Self.period_ids.append(period.id)
+            // fetch data from url
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                // unwrap data and check for error in getting data
+                guard let data = data, error == nil else {
+                    print(String(describing: error))
+                    Self.error = "Cannot connect."
+                    
+                    // escape nil to show error
+                    completion(nil)
+                    return
                 }
+                
+                // decode data into DineOnCampusAPI struct
+                var api: DineOnCampusAPI?
+                do {
+                    api = try JSONDecoder().decode(DineOnCampusAPI.self, from: data)
+                } catch {
+                    print(String(describing: error))
+                    Self.error = "No menu avaliable for \(Date().formatted(date: .abbreviated, time: .omitted))."
+                    
+                    // escape nil to show error
+                    completion(nil)
+                    return
+                }
+                
+                // fill period_ids if it only has the default ""
+                if Self.period_ids.count == 1 {
+                    Self.period_ids = [] // clear array
+                    
+                    let periods = api?.periods
+                    
+                    for period in periods! {
+                        Self.period_ids.append(period.id)
+                    }
+                }
+                
+                // escape the api object
+                completion(api)
             }
-            
-            // escape the api object
-            completion(api)
+            .resume()
         }
-        .resume()
     }
     
-    // get id of school
+    // get id of school (ex. acadiau)
     func getSchool(school slug: String, completion: @escaping (String?) -> ()) {
         // NOTE: only for canadian website, for US use
         // "https://api.dineoncampus.com/v1/sites/public"
@@ -109,9 +117,61 @@ class ApiCall {
                 }
             }
             
+            // unable to find school
             Self.error = "\(slug) not found."
             completion(nil)
         }
         .resume()
+    }
+    
+    // get id of location (ex. wheelock hall)
+    func getLocationID(location name: String, completion: @escaping (String?) -> ()) {
+        getSchool(school: "acadiau") { schoolID in
+            guard let schoolID else {
+                print("error getting school id")
+                return
+            }
+            
+            guard let url = URL(string: "https://api.dineoncampus.ca/v1/locations/buildings_locations?site_id=\(schoolID)") else { return }
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                // unwrap data and check for error in getting data
+                guard let data = data, error == nil else {
+                    print(String(describing: error))
+                    Self.error = "Cannot connect."
+                    
+                    // escape nil to show error
+                    completion(nil)
+                    return
+                }
+                
+                // decode data into Schools struct
+                var locations: Locations
+                do {
+                    locations = try JSONDecoder().decode(Locations.self, from: data)
+                } catch {
+                    print(String(describing: error))
+                    Self.error = "Error getting locations."
+                    
+                    // escape nil to show error
+                    completion(nil)
+                    return
+                }
+                
+                // look for location
+                for location in locations.standalone_locations {
+                    if location.name == name {
+                        // escape locations id
+                        completion(location.id)
+                        return
+                    }
+                }
+                
+                // unable to find location
+                Self.error = "\(name) not found."
+                completion(nil)
+            }
+            .resume()
+        }
     }
 }
