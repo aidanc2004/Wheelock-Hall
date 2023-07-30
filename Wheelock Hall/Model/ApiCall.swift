@@ -36,9 +36,7 @@ class ApiCall {
                 Self.error = "Cannot connect."
                 
                 // escape nil to show error
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
                 return
             }
             
@@ -51,9 +49,7 @@ class ApiCall {
                 Self.error = "No menu avaliable for \(Date().formatted(date: .abbreviated, time: .omitted))."
                 
                 // escape nil to show error
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
                 return
             }
             
@@ -69,9 +65,7 @@ class ApiCall {
             }
             
             // escape the api object
-            DispatchQueue.main.async {
-                completion(api)
-            }
+            completion(api)
         }
         .resume()
     }
@@ -89,9 +83,7 @@ class ApiCall {
                 Self.error = "Cannot connect."
                 
                 // escape nil to show error
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
                 return
             }
             
@@ -104,26 +96,21 @@ class ApiCall {
                 Self.error = "Error getting schools."
                 
                 // escape nil to show error
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
                 return
             }
             
             // look for school
             for school in schools.sites {
                 if school.slug == slug {
-                    DispatchQueue.main.async {
-                        completion(school.id)
-                    }
+                    // escape school id
+                    completion(school.id)
                     return
                 }
             }
             
             Self.error = "\(slug) not found."
-            DispatchQueue.main.async {
-                completion(nil)
-            }
+            completion(nil)
         }
         .resume()
     }
