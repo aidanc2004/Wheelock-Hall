@@ -9,11 +9,14 @@ import Foundation
 
 // class to get the dine on campus api
 class ApiCall {
+    static var categories: [Category]?
+    static var periods: [Period]?
     static var period_ids: [String] = [""] // none for first period
     static var error: String? // not `Error?` because this is for the user
     static var title: String?
-    static var categories: [Category]?
-    static var periods: [Period]?
+    
+    static var school: String = "acadiau"
+    static var location: String = "Wheelock Dining Hall"
     
     private var schoolID: String?
     private var locationID: String?
@@ -31,7 +34,8 @@ class ApiCall {
         
         let period = Self.period_ids[periodNumber]
         
-        getLocationID(school: "acadiau", location: "Wheelock Dining Hall") { locationID in
+        // TODO: let user choose school and location
+        getLocationID(school: Self.school, location: Self.location) { locationID in
             guard let locationID else {
                 Self.error = "Couldn't get school and location."
                 completion(nil)
@@ -42,9 +46,9 @@ class ApiCall {
             let url = URL(string: "https://api.dineoncampus.ca/v1/location/\(locationID)/periods/\(period)?platform=0&date=\(dateString)")!
             
             // fetch data from url
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            URLSession.shared.dataTask(with: url) { data, _, error in
                 // unwrap data and check for error in getting data
-                guard let data = data, error == nil else {
+                guard let data, error == nil else {
                     print(String(describing: error))
                     Self.error = "Cannot connect."
                     
@@ -99,9 +103,9 @@ class ApiCall {
         // "https://api.dineoncampus.com/v1/sites/public"
         let url = URL(string: "https://api.dineoncampus.ca/v1/sites/public_ca")!
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             // unwrap data and check for error in getting data
-            guard let data = data, error == nil else {
+            guard let data, error == nil else {
                 print("school id: couldn't connect")
                 completion(nil)
                 return
@@ -137,22 +141,22 @@ class ApiCall {
     // get id of location (ex. wheelock hall)
     func getLocationID(school: String, location name: String, completion: @escaping (String?) -> ()) {
         getSchool(school: school) { schoolID in
+            guard let schoolID else {
+                completion(nil)
+                return
+            }
+            
             // dont call api if location id is already stored
             if self.locationID != nil {
                 completion(self.locationID)
                 return
             }
             
-            guard let schoolID else {
-                completion(nil)
-                return
-            }
-            
             let url = URL(string: "https://api.dineoncampus.ca/v1/locations/buildings_locations?site_id=\(schoolID)")!
             
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            URLSession.shared.dataTask(with: url) { data, _, error in
                 // unwrap data and check for error in getting data
-                guard let data = data, error == nil else {
+                guard let data, error == nil else {
                     print("location id: couldn't connect")
                     completion(nil)
                     return
