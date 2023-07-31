@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var categories: [Category] = []
-    @State private var periods: [Period] = []
     @State private var success: Bool = true
     @State private var done: Bool = false
     @State private var first: Bool = false
@@ -24,7 +22,7 @@ struct ContentView: View {
                     VStack {
                         // keep title while loading (after first load)
                         if done || first {
-                            TitleView(periods: periods,
+                            TitleView(periods: ApiCall.periods!,
                                       callApi: callApi,
                                       done: $done,
                                       selected: $selected)
@@ -36,7 +34,7 @@ struct ContentView: View {
                         
                         // if not done, show a loading symbol
                         if done {
-                            MenuView(categories: categories, selected: $selected)
+                            MenuView(categories: ApiCall.categories!, selected: $selected)
                         } else {
                             if !first { Spacer() }
                             ProgressView()
@@ -61,15 +59,12 @@ struct ContentView: View {
     
     func callApi(period: Int) {
         ApiCall().getApi(period: period) { api in
-            guard let api else {
+            if api == nil {
                 success.toggle()
                 return
+            } else {
+                self.done = true
             }
-            
-            self.categories = api.menu.periods.categories
-            self.periods = api.periods
-            
-            self.done = true
         }
     }
 }

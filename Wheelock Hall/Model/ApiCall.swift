@@ -11,9 +11,12 @@ import Foundation
 class ApiCall {
     static var period_ids: [String] = [""] // none for first period
     static var error: String? // not `Error?` because this is for the user
-    static var schoolID: String?
-    static var locationID: String?
     static var title: String?
+    static var categories: [Category]?
+    static var periods: [Period]?
+    
+    private var schoolID: String?
+    private var locationID: String?
     
     // get menu information
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
@@ -30,7 +33,7 @@ class ApiCall {
         
         getLocationID(school: "acadiau", location: "Wheelock Dining Hall") { locationID in
             guard let locationID else {
-                Self.error = "Could not get school and location."
+                Self.error = "Couldn't get school and location."
                 completion(nil)
                 return
             }
@@ -74,6 +77,9 @@ class ApiCall {
                     }
                 }
                 
+                Self.categories = api?.menu.periods.categories
+                Self.periods = api?.periods
+                
                 // escape the api object
                 completion(api)
             }
@@ -84,8 +90,8 @@ class ApiCall {
     // get id of school (ex. acadiau)
     func getSchool(school slug: String, completion: @escaping (String?) -> ()) {
         // dont call api if school id is already stored
-        if Self.schoolID != nil {
-            completion(Self.schoolID)
+        if self.schoolID != nil {
+            completion(self.schoolID)
             return
         }
         
@@ -115,7 +121,7 @@ class ApiCall {
             for school in schools.sites {
                 if school.slug == slug {
                     // escape school id
-                    Self.schoolID = school.id
+                    self.schoolID = school.id
                     completion(school.id)
                     return
                 }
@@ -132,8 +138,8 @@ class ApiCall {
     func getLocationID(school: String, location name: String, completion: @escaping (String?) -> ()) {
         getSchool(school: school) { schoolID in
             // dont call api if location id is already stored
-            if Self.locationID != nil {
-                completion(Self.locationID)
+            if self.locationID != nil {
+                completion(self.locationID)
                 return
             }
             
@@ -166,7 +172,7 @@ class ApiCall {
                 for location in locations.standalone_locations {
                     if location.name == name {
                         // escape locations id
-                        Self.locationID = location.id
+                        self.locationID = location.id
                         Self.title = location.name // get title for TitleView
                         completion(location.id)
                         return
