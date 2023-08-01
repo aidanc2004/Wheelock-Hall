@@ -13,6 +13,20 @@
 		5667CD6F2A67A44800B60348 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667CD6E2A67A44800B60348 /* CategoryView.swift */; };
 		566897552A71709400AB46F9 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566897542A71709400AB46F9 /* TitleView.swift */; };
 		566897572A71776600AB46F9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566897562A71776600AB46F9 /* String.swift */; };
+		5673B5182A79CB0200DCF3AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5673B5172A79CB0200DCF3AB /* Preview Assets.xcassets */; };
+		5673B51D2A79CB1900DCF3AB /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FE0762A68DD370036C8B5 /* ItemView.swift */; };
+		5673B51E2A79CB1900DCF3AB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569010552A6C738600B83D02 /* MenuView.swift */; };
+		5673B51F2A79CB1900DCF3AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD1F2A6792E7008680AE /* ContentView.swift */; };
+		5673B5202A79CB1900DCF3AB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667CD6E2A67A44800B60348 /* CategoryView.swift */; };
+		5673B5212A79CB1900DCF3AB /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566897542A71709400AB46F9 /* TitleView.swift */; };
+		5673B5222A79CB1900DCF3AB /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563C45872A6C516400E1CB5E /* ItemDetailView.swift */; };
+		5673B5232A79CB1D00DCF3AB /* Wheelock_HallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */; };
+		5673B5242A79CB1D00DCF3AB /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566897562A71776600AB46F9 /* String.swift */; };
+		5673B5252A79CB2000DCF3AB /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561432E32A7710D000C19E51 /* SchoolModel.swift */; };
+		5673B5262A79CB2000DCF3AB /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD112A678217008680AE /* MenuModel.swift */; };
+		5673B5272A79CB2000DCF3AB /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD132A67825F008680AE /* ApiCall.swift */; };
+		5673B5282A79CB2000DCF3AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD072A6781CA008680AE /* Assets.xcassets */; };
+		5673B5292A79CB2500DCF3AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD0A2A6781CA008680AE /* Preview Assets.xcassets */; };
 		569010562A6C738600B83D02 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569010552A6C738600B83D02 /* MenuView.swift */; };
 		56EDFD042A6781C9008680AE /* Wheelock_HallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */; };
 		56EDFD082A6781CA008680AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFD072A6781CA008680AE /* Assets.xcassets */; };
@@ -29,6 +43,9 @@
 		5667CD6E2A67A44800B60348 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		566897542A71709400AB46F9 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		566897562A71776600AB46F9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wheelock Hall Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5673B5172A79CB0200DCF3AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5673B5192A79CB0200DCF3AB /* Wheelock_Hall_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wheelock_Hall_Mac.entitlements; sourceTree = "<group>"; };
 		569010552A6C738600B83D02 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		56EDFD002A6781C9008680AE /* Wheelock Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wheelock Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EDFD032A6781C9008680AE /* Wheelock_HallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheelock_HallApp.swift; sourceTree = "<group>"; };
@@ -40,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5673B50B2A79CB0200DCF3AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EDFCFD2A6781C9008680AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,10 +97,28 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5673B50F2A79CB0200DCF3AB /* Wheelock Hall Mac */ = {
+			isa = PBXGroup;
+			children = (
+				5673B5192A79CB0200DCF3AB /* Wheelock_Hall_Mac.entitlements */,
+				5673B5162A79CB0200DCF3AB /* Preview Content */,
+			);
+			path = "Wheelock Hall Mac";
+			sourceTree = "<group>";
+		};
+		5673B5162A79CB0200DCF3AB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5673B5172A79CB0200DCF3AB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		56EDFCF72A6781C9008680AE = {
 			isa = PBXGroup;
 			children = (
 				56EDFD022A6781C9008680AE /* Wheelock Hall */,
+				5673B50F2A79CB0200DCF3AB /* Wheelock Hall Mac */,
 				56EDFD012A6781C9008680AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				56EDFD002A6781C9008680AE /* Wheelock Hall.app */,
+				5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +156,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5673B50D2A79CB0200DCF3AB /* Wheelock Hall Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5673B51C2A79CB0200DCF3AB /* Build configuration list for PBXNativeTarget "Wheelock Hall Mac" */;
+			buildPhases = (
+				5673B50A2A79CB0200DCF3AB /* Sources */,
+				5673B50B2A79CB0200DCF3AB /* Frameworks */,
+				5673B50C2A79CB0200DCF3AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Wheelock Hall Mac";
+			productName = "Wheelock Hall Mac";
+			productReference = 5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		56EDFCFF2A6781C9008680AE /* Wheelock Hall */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56EDFD0E2A6781CA008680AE /* Build configuration list for PBXNativeTarget "Wheelock Hall" */;
@@ -140,6 +200,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					5673B50D2A79CB0200DCF3AB = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					56EDFCFF2A6781C9008680AE = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -159,11 +222,22 @@
 			projectRoot = "";
 			targets = (
 				56EDFCFF2A6781C9008680AE /* Wheelock Hall */,
+				5673B50D2A79CB0200DCF3AB /* Wheelock Hall Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5673B50C2A79CB0200DCF3AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5673B5282A79CB2000DCF3AB /* Assets.xcassets in Resources */,
+				5673B5292A79CB2500DCF3AB /* Preview Assets.xcassets in Resources */,
+				5673B5182A79CB0200DCF3AB /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EDFCFE2A6781C9008680AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +250,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5673B50A2A79CB0200DCF3AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5673B5222A79CB1900DCF3AB /* ItemDetailView.swift in Sources */,
+				5673B5252A79CB2000DCF3AB /* SchoolModel.swift in Sources */,
+				5673B5262A79CB2000DCF3AB /* MenuModel.swift in Sources */,
+				5673B5232A79CB1D00DCF3AB /* Wheelock_HallApp.swift in Sources */,
+				5673B5272A79CB2000DCF3AB /* ApiCall.swift in Sources */,
+				5673B51D2A79CB1900DCF3AB /* ItemView.swift in Sources */,
+				5673B51E2A79CB1900DCF3AB /* MenuView.swift in Sources */,
+				5673B5202A79CB1900DCF3AB /* CategoryView.swift in Sources */,
+				5673B51F2A79CB1900DCF3AB /* ContentView.swift in Sources */,
+				5673B5242A79CB1D00DCF3AB /* String.swift in Sources */,
+				5673B5212A79CB1900DCF3AB /* TitleView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EDFCFC2A6781C9008680AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,6 +289,60 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		5673B51A2A79CB0200DCF3AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Wheelock Hall Mac/Wheelock_Hall_Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Wheelock Hall Mac/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aidanc2004.Wheelock-Hall-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5673B51B2A79CB0200DCF3AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Wheelock Hall Mac/Wheelock_Hall_Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Wheelock Hall Mac/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "aidanc2004.Wheelock-Hall-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		56EDFD0C2A6781CA008680AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -370,6 +516,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5673B51C2A79CB0200DCF3AB /* Build configuration list for PBXNativeTarget "Wheelock Hall Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5673B51A2A79CB0200DCF3AB /* Debug */,
+				5673B51B2A79CB0200DCF3AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		56EDFCFB2A6781C9008680AE /* Build configuration list for PBXProject "Wheelock Hall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

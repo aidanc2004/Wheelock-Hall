@@ -18,7 +18,7 @@ struct ContentView: View {
         VStack {
             // if the api call was successful
             if success {
-                NavigationView {
+                NavigationStack {
                     VStack {
                         // keep title while loading (after first load)
                         if done || first {
