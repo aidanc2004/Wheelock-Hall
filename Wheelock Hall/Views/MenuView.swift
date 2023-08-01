@@ -19,8 +19,11 @@ struct MenuView: View {
                     CategoryView(category: category, selected: $selected)
                 }
             }
-            // TODO: .insetGrouped doesnt work on mac
+            #if os(macOS)
             .listStyle(.inset)
+            #else
+            .listStyle(.insetGrouped)
+            #endif
         }
     }
 }
