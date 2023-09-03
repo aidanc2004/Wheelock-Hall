@@ -24,13 +24,13 @@ class ApiCall {
     // get menu information
     func getApi(period periodNumber: Int, completion: @escaping (DineOnCampusAPI?) -> ()) {
         // get current date
-        //let date = Date()
-        //let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyyMMdd" // set date format to iso
-        //let dateString = dateFormatter.string(from: date) // convert date to string
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd" // set date format
+        let dateString = dateFormatter.string(from: date) // convert date to string
         
         // example date that has a current menu (april 4, 2023)
-        let dateString = "20230404"
+        //let dateString = "20230404"
         
         let period = Self.period_ids[periodNumber]
         
