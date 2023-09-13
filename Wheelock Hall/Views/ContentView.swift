@@ -5,6 +5,13 @@
 //  Created by Aidan Carey on 2023-07-18.
 //
 
+/*
+ TODO:
+  * Add app icon
+  * Figure out why it crashed that one time
+  * Export to iOS
+*/
+
 import SwiftUI
 
 struct ContentView: View {
@@ -41,6 +48,7 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
+                    .navigationSplitViewColumnWidth(300)
                 } detail: {}
             // otherwise show error message
             } else {
