@@ -48,7 +48,7 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
-                    .navigationSplitViewColumnWidth(300)
+                    .navigationSplitViewColumnWidth(350)
                 } detail: {}
             // otherwise show error message
             } else {

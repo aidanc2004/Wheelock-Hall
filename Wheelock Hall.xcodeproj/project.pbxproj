@@ -43,7 +43,7 @@
 		5667CD6E2A67A44800B60348 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		566897542A71709400AB46F9 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		566897562A71776600AB46F9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wheelock Hall Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5673B50E2A79CB0200DCF3AB /* Wheelock Hall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wheelock Hall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5673B5172A79CB0200DCF3AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5673B5192A79CB0200DCF3AB /* Wheelock_Hall_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wheelock_Hall_Mac.entitlements; sourceTree = "<group>"; };
 		569010552A6C738600B83D02 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				56EDFD002A6781C9008680AE /* Wheelock Hall.app */,
-				5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */,
+				5673B50E2A79CB0200DCF3AB /* Wheelock Hall.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 			);
 			name = "Wheelock Hall Mac";
 			productName = "Wheelock Hall Mac";
-			productReference = 5673B50E2A79CB0200DCF3AB /* Wheelock Hall Mac.app */;
+			productReference = 5673B50E2A79CB0200DCF3AB /* Wheelock Hall.app */;
 			productType = "com.apple.product-type.application";
 		};
 		56EDFCFF2A6781C9008680AE /* Wheelock Hall */ = {
@@ -309,7 +309,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "aidanc2004.Wheelock-Hall-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wheelock Hall";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -336,7 +336,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "aidanc2004.Wheelock-Hall-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Wheelock Hall";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

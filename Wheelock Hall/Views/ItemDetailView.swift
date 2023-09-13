@@ -48,6 +48,7 @@ struct ItemDetailView: View {
             }
             .padding()
         }
+        .navigationSplitViewColumnWidth(300)
     }
 }
 
