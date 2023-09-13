@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var done: Bool = false
     @State private var first: Bool = false
     @State private var selected: String?
-    @State private var selectedItem: Item? // TODO: HACK fix this
     static var currentPeriod: String = ""
     
     var body: some View {
