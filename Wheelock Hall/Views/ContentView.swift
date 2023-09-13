@@ -12,13 +12,14 @@ struct ContentView: View {
     @State private var done: Bool = false
     @State private var first: Bool = false
     @State private var selected: String?
+    @State private var selectedItem: Item? // TODO: HACK fix this
     static var currentPeriod: String = ""
     
     var body: some View {
         VStack {
             // if the api call was successful
             if success {
-                NavigationStack {
+                NavigationSplitView {
                     VStack {
                         // keep title while loading (after first load)
                         if done || first {
@@ -41,7 +42,7 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
-                }
+                } detail: {}
             // otherwise show error message
             } else {
                 VStack {
