@@ -16,10 +16,12 @@ struct ItemDetailView: View {
                 Text(item.name.capitalized)
                     .font(.title)
                 
-                if item.desc != "~" {
-                    Text(item.desc.itemDescription())
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
+                if let desc = item.desc {
+                    if desc != "~" {
+                        Text(desc.itemDescription())
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                    }
                 }
                 
                 Text("\(item.portion), \(item.calories) calories.")

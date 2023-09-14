@@ -22,10 +22,12 @@ struct ItemView: View {
                     }
                 
                 // show item description if it exists
-                if item.desc != "~" {
-                    Text(item.desc.itemDescription())
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                if let desc = item.desc {
+                    if desc != "~" {
+                        Text(desc.itemDescription())
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
                 }
                 
                 // show expanded item description if selected
