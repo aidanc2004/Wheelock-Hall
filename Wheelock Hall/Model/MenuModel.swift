@@ -43,7 +43,7 @@ struct Item: Decodable, Identifiable {
     let name: String
     let desc: String?
     let nutrients: [Nutrient]
-    let ingredients: String
+    let ingredients: String?
     let calories: Int
     let portion: String
 }

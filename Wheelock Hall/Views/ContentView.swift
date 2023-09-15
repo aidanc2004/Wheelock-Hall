@@ -8,7 +8,6 @@
 /*
  TODO:
   * Add app icon
-  * Figure out why it crashed that one time
   * Export to iOS
 */
 

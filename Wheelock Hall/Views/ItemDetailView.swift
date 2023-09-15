@@ -46,7 +46,10 @@ struct ItemDetailView: View {
             VStack {
                 Text("Ingredients:")
                     .font(.headline)
-                Text(item.ingredients)
+                
+                if let ingredients = item.ingredients {
+                    Text(ingredients)
+                }
             }
             .padding()
         }
